@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ 
+
+    <title>قائمة الموظفين</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            direction: rtl; /* اجعل النص من اليمين لليسار */
+            background-color: #f4f4f4; /* لون خلفية خفيف */
+            margin: 0;
+            padding: 20px;
+        }
+
+        h1 {
+            text-align: center; /* اجعل العنوان في المنتصف */
+            color: #333; /* لون العنوان */
+            margin-bottom: 20px; /* مسافة تحت العنوان */
+        }
+
+        .header-buttons {
+            display: flex;
+            justify-content: space-between; /* توزيع الأزرار */
+            margin-bottom: 20px; /* مسافة تحت الأزرار */
+        }
+
+        .header-buttons button, .header-buttons form {
+            margin-left: 10px; /* مسافة بين الأزرار */
+        }
+
+        form {
+            display: flex; /* اجعل الحقول في سطر واحد */
+            align-items: center; /* محاذاة عمودية */
+        }
+
+        input[type="text"] {
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            margin-left: 5px; /* مسافة بين حقل الإدخال وزر البحث */
+        }
+
+        button {
+            padding: 10px 15px;
+            background-color: #4CAF50; /* لون الزر */
+            color: white; /* لون النص */
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #45a049; /* تغيير لون الزر عند التمرير */
+        }
+
+        table {
+            width: 100%; /* اجعل الجدول بعرض الصفحة */
+            border-collapse: collapse; /* اجعل الحدود متقاربة */
+            margin-top: 20px; /* اترك مساحة فوق الجدول */
+            background-color: #fff; /* لون خلفية الجدول */
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* ظل خفيف للجدول */
+        }
+
+        th, td {
+            padding: 10px; /* مساحة داخل الخلايا */
+            text-align: center; /* اجعل النص في المنتصف */
+            border: 1px solid #ddd; /* حد خفيف للخلايا */
+        }
+
+        th {
+            background-color: #4CAF50;; /* لون خلفية رأس الجدول */
+            color: white; /* لون النص في رأس الجدول */
+        }
+
+        tr:hover {
+            background-color: #f1f1f1; /* تغيير لون الصف عند التمرير عليه */
+        }
+
+        a {
+            color: #4CAF50; /* لون الروابط */
+            text-decoration: none; /* إزالة التسطير من الروابط */
+        }
+
+        a:hover {
+            text-decoration: underline; /* تسطير الروابط عند التمرير */
+        }
+
+        .add-button {
+            display: block; /* اجعل زر الإضافة في سطر جديد */
+            margin: 20px auto; /* اجعل الزر في المنتصف */
+            padding: 10px 20px; /* مساحة داخل الزر */
+            background-color: #4CAF50; /* لون خلفية الزر */
+            color: white; /* لون النص في الزر */
+            text-align: center; /* اجعل النص في المنتصف */
+            border-radius: 5px; /* زوايا مستديرة للزر */
+            width: 200px; /* عرض الزر */
+        }
+
+        .add-button:hover {
+            background-color: #45a049; /* تغيير لون الزر عند التمرير */
+        }
+    </style>
+</head>
+<body>
+
+    <h1>قائمة الموظفين</h1>
+    <div class="header-buttons">
+        <button class="main-page-button" onclick="window.location.href='{% url 'MainPage' %}'">العودة إلى الصفحة الرئيسية</button>
+        <form method="GET" action="">
+            <input type="text" name="q" placeholder="ابحث...">
+            <button type="submit">بحث</button>
+        </form>
+        <button onclick="window.print()">طباعة</button>
+    </div>
+    <table>
+        <thead>
+            <tr>
+                <th>اسم الموظف</th>
+                <th>رقم الهوية</th>
+                <th>رقم الجوال</th>
+                <th>المهنة</th>
+                <th>الراتب</th>
+                <th>ملاحظات</th>
+                <th>أضيف بواسطة</th>
+                <th>تم التعديل بواسطة</th>
+                <th>تاريخ الإضافة</th>
+                <th>تاريخ التعديل</th>
+                <th>إجراءات</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for employee in employees %}
+            <tr>
+                <td>{{ employee.name }}</td>
+                <td>{{ employee.id_number }}</td>
+                <td>{{ employee.mobile_number }}</td>
+                <td>{{ employee.profession }}</td>
+                <td>{{ employee.salary }}</td>
+                <td>{{ employee.notes }}</td>
+                <td>{{ employee.created_by }}</td>
+                <td>{{ employee.updated_by }}</td>
+                <td>{{ employee.created_at }}</td>
+                <td>{{ employee.updated_at }}</td>
+                <td class="action-buttons">
+                    <a href="{% url 'employee_update' employee.id %}">تعديل</a> |
+                    <a href="{% url 'employee_delete' employee.id %}">حذف</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <a href="{% url 'employee_create' %}" class="add-button">إضافة موظف جديد</a>
+</body>
+</html>
+

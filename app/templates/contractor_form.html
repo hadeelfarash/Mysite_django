@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <title>نموذج المقاول</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            direction: rtl; /* اجعل النص من اليمين لليسار */
+            margin: 0;
+            padding: 20px;
+            background-color: #f4f4f4; /* لون خلفية خفيف */
+        }
+
+        h1 {
+            text-align: center; /* اجعل العنوان في المنتصف */
+            color: #333; /* لون العنوان */
+            margin-bottom: 20px; /* مسافة تحت العنوان */
+        }
+
+        .header-buttons {
+            display: flex;
+            justify-content: flex-start; /* الأزرار على اليسار */
+            margin-bottom: 20px; /* مسافة تحت الأزرار */
+        }
+
+        .header-buttons button {
+            margin-left: 10px; /* مسافة بين الأزرار */
+            padding: 10px 15px;
+            background-color: #4CAF50; /* لون الزر */
+            color: white; /* لون النص */
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .header-buttons button:hover {
+            background-color: #45a049; /* تغيير لون الزر عند التمرير */
+        }
+
+        form {
+            background-color: #fff; /* لون خلفية النموذج */
+            padding: 20px; /* مساحة داخل النموذج */
+            border-radius: 5px; /* زوايا مستديرة للنموذج */
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* ظل خفيف للنموذج */
+            max-width: 600px; /* الحد الأقصى لعرض النموذج */
+            margin: auto; /* لتوسيط النموذج */
+        }
+
+        input[type="text"], input[type="number"], input[type="email"], textarea {
+            width: 100%; /* اجعل الحقول بعرض النموذج */
+            padding: 10px; /* مساحة داخل الحقول */
+            margin: 10px 0; /* مسافة فوق وتحت الحقول */
+            border: 1px solid #ccc; /* حد خفيف للحقول */
+            border-radius: 5px; /* زوايا مستديرة للحقول */
+        }
+
+        button[type="submit"] {
+            background-color: #4CAF50; /* لون زر الحفظ */
+            color: white; /* لون النص */
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            padding: 10px 15px; /* مساحة داخل الزر */
+            margin-top: 10px; /* مسافة فوق الزر */
+            width: 100%; /* اجعل الزر بعرض النموذج */
+        }
+
+        button[type="submit"]:hover {
+            background-color: #45a049; /* تغيير لون الزر عند التمرير */
+        }
+
+        a {
+            display: inline-block; /* اجعل الرابط في سطر جديد */
+            margin-top: 20px; /* مسافة فوق الرابط */
+            color: #4CAF50; /* لون الرابط */
+            text-decoration: none; /* إزالة التسطير */
+            font-weight: bold; /* جعل النص غامق */
+            text-align: center; /* محاذاة النص في المنتصف */
+        }
+
+        a:hover {
+            text-decoration: underline; /* تسطير الرابط عند التمرير */
+        }
+    </style>
+</head>
+<body>
+    <div class="header-buttons">
+        <button class="main-page-button" onclick="window.location.href='{% url 'MainPage' %}'">العودة إلى الصفحة الرئيسية</button>
+    </div>
+
+    <h1>نموذج المقاول</h1>
+    
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">حفظ</button>
+    </form>
+    
+    <a href="{% url 'contractor_list' %}">العودة إلى القائمة</a>
+</body>
+</html>
+

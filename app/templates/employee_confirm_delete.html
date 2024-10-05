@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <button class="main-page-button" onclick="window.location.href='{% url 'MainPage' %}'">العودة إلى الصفحة الرئيسية</button>
+
+    <title>تأكيد الحذف</title>
+</head>
+<body>
+    <h1>هل أنت متأكد من حذف {{ employee.name }}؟</h1>
+    <form method="post">
+        {% csrf_token %}
+        <button type="submit">نعم، حذف</button>
+    </form>
+    <a href="{% url 'employee_list' %}">إلغاء</a>
+</body>
+</html>

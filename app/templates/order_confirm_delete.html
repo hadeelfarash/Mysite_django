@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <button class="main-page-button" onclick="window.location.href='{% url 'MainPage' %}'">العودة إلى الصفحة الرئيسية</button>
+
+    <title>تأكيد حذف الطلبية</title>
+</head>
+<body>
+    <h2>هل أنت متأكد من أنك تريد حذف هذا الطلبية؟</h2>
+    
+    <p>كود البند: {{ order.item_code }}</p>
+    <p>السعر: {{ order.price }}</p>
+    <p>العدد المطلوب: {{ order.quantity_required }}</p>
+    <p>التكلفة: {{ order.total_cost }}</p>
+
+    <form method="POST">
+        {% csrf_token %}
+        <button type="submit">نعم، حذف</button>
+        <a href="{% url 'order_list' %}">إلغاء</a>
+    </form>
+</body>
+</html>

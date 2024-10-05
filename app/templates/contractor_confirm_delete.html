@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <title>تأكيد الحذف</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            direction: rtl; /* اجعل النص من اليمين لليسار */
+            margin: 0;
+            padding: 20px;
+            background-color: #f4f4f4; /* لون خلفية خفيف */
+        }
+
+        .header-buttons {
+            display: flex;
+            justify-content: flex-start; /* الأزرار على اليسار */
+            margin-bottom: 20px; /* مسافة تحت الأزرار */
+        }
+
+        .header-buttons button {
+            margin-left: 10px; /* مسافة بين الأزرار */
+            padding: 10px 15px;
+            background-color: #4CAF50; /* لون الزر */
+            color: white; /* لون النص */
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .header-buttons button:hover {
+            background-color: #45a049; /* تغيير لون الزر عند التمرير */
+        }
+
+        h1 {
+            text-align: center; /* اجعل العنوان في المنتصف */
+            color: #333; /* لون العنوان */
+            margin-bottom: 20px; /* مسافة تحت العنوان */
+        }
+
+        form {
+            display: flex; /* اجعل النموذج مرن */
+            flex-direction: column; /* اجعل العناصر في عمود */
+            align-items: center; /* اجعل العناصر في المنتصف */
+            background-color: #fff; /* لون خلفية النموذج */
+            padding: 20px; /* مساحة داخل النموذج */
+            border-radius: 5px; /* زوايا مستديرة للنموذج */
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* ظل خفيف للنموذج */
+            max-width: 400px; /* الحد الأقصى لعرض النموذج */
+            margin: auto; /* لتوسيط النموذج */
+        }
+
+        button[type="submit"] {
+            background-color: #d9534f; /* لون زر الحذف */
+            color: white; /* لون النص */
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            padding: 10px 15px; /* مساحة داخل الزر */
+            margin-top: 10px; /* مسافة فوق الزر */
+            width: 100%; /* اجعل الزر بعرض النموذج */
+        }
+
+        button[type="submit"]:hover {
+            background-color: #c9302c; /* تغيير لون الزر عند التمرير */
+        }
+
+        a {
+            display: inline-block; /* اجعل الرابط في سطر جديد */
+            margin-top: 20px; /* مسافة فوق الرابط */
+            color: #4CAF50; /* لون الرابط */
+            text-decoration: none; /* إزالة التسطير */
+            font-weight: bold; /* جعل النص غامق */
+            text-align: center; /* محاذاة النص في المنتصف */
+        }
+
+        a:hover {
+            text-decoration: underline; /* تسطير الرابط عند التمرير */
+        }
+    </style>
+</head>
+<body>
+    <div class="header-buttons">
+        <button class="main-page-button" onclick="window.location.href='{% url 'MainPage' %}'">العودة إلى الصفحة الرئيسية</button>
+    </div>
+
+    <h1>هل أنت متأكد من حذف {{ contractor.name }}؟</h1>
+    
+    <form method="post">
+        {% csrf_token %}
+        <button type="submit">نعم، حذف</button>
+    </form>
+    
+    <a href="{% url 'contractor_list' %}">إلغاء</a>
+</body>
+</html>
+

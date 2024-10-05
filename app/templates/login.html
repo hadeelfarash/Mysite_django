@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>تسجيل الدخول</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh; /* جعل الصفحة تأخذ كامل ارتفاع الشاشة */
+        }
+        .login-container {
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 300px; /* عرض ثابت للحاوية */
+        }
+        h2 {
+            text-align: center;
+            color: #333;
+        }
+        label {
+            margin-top: 10px;
+            display: block;
+            color: #555;
+        }
+        input[type="text"],
+        input[type="password"] {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box; /* لضمان عدم overflow */
+        }
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 15px;
+            font-size: 1em;
+            transition: background-color 0.3s; /* تأثير تغيير اللون */
+        }
+        button:hover {
+            background-color: #0056b3; /* تغيير اللون عند التمرير */
+        }
+        p {
+            text-align: center;
+            margin-top: 15px;
+            color: #555;
+        }
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <h2>تسجيل الدخول</h2>
+        <form method="POST">
+            {% csrf_token %}
+            <label for="username">اسم المستخدم:</label>
+            <input type="text" name="username" required>
+            
+            <label for="password">كلمة المرور:</label>
+            <input type="password" name="password" required>
+            
+            <button type="submit">تسجيل الدخول</button>
+        </form>
+        <p>ليس لديك حساب؟ <a href="{% url 'register' %}">سجل الآن</a></p>
+    </div>
+</body>
+</html>

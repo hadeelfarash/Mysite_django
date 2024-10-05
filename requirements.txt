@@ -1,0 +1,10 @@
+certifi==2024.8.30
+charset-normalizer==3.3.2
+Django==2.2.4
+django-distill==3.2.7
+idna==3.10
+pillow==10.4.0
+pytz==2024.2
+requests==2.32.3
+sqlparse==0.5.1
+urllib3==2.2.3
