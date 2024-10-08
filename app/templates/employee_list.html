@@ -134,7 +134,8 @@
         <tbody>
             {% for employee in employees %}
             <tr>
-                <td>{{ employee.name }}</td>
+                <td><a href="{% url 'employee_detail' employee.id %}">{{ employee.name }}</a></td>
+
                 <td>{{ employee.id_number }}</td>
                 <td>{{ employee.mobile_number }}</td>
                 <td>{{ employee.profession }}</td>

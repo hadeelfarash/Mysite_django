@@ -132,7 +132,7 @@
         <tbody>
             {% for contractor in contractors %}
             <tr>
-                <td>{{ contractor.name }}</td>
+                <td><a href="{% url 'contractor_detail' contractor.id %}">{{ contractor.name }}</a></td>
                 <td>{{ contractor.id_number }}</td>
                 <td>{{ contractor.mobile_number }}</td>
                 <td>{{ contractor.profession }}</td>

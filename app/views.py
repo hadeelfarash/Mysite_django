@@ -417,3 +417,18 @@ def order_delete(request, order_id):
         return redirect('order_list')  # بعد الحذف، إعادة توجيه إلى قائمة الحسابات
     
     return render(request, 'order_confirm_delete.html', {'order': order})
+
+
+
+
+def contractor_detail(request, contractor_id):
+    contractor = get_object_or_404(Contractor, id=contractor_id)  # استرداد المقاول بناءً على المعرف
+    return render(request, 'contractor_detail.html', {'contractor': contractor})  # تمرير المقاول إلى القالب
+
+def employee_detail(request, employee_id):
+    employee = get_object_or_404(Employee, id=employee_id)  # استرداد المقاول بناءً على المعرف
+    return render(request, 'employee_detail.html', {'employee': employee})  # تمرير المقاول إلى القالب
+
+def subscribers_detail(request, subscribers_id):
+    subscriber= get_object_or_404(Subscriber, id=subscribers_id)  # استرداد المقاول بناءً على المعرف
+    return render(request, 'subscribers_detail.html', {'subscriber': subscriber})  # تمرير المقاول إلى القالب

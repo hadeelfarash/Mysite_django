@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <title>تقرير المقاول</title>
+    
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            direction: rtl; /* اجعل النص من اليمين لليسار */
+            margin: 0;
+            padding: 20px;
+            background-color: #f4f4f4; /* لون خلفية خفيف */
+        }
+
+        h1 {
+            text-align: center; /* اجعل العنوان في المنتصف */
+            color: #333; /* لون العنوان */
+            margin-bottom: 20px; /* مسافة تحت العنوان */
+        }
+
+        .contractor-info {
+            background-color: #fff; /* لون خلفية معلومات المقاول */
+            padding: 20px; /* مساحة داخل المعلومات */
+            border-radius: 8px; /* زوايا مستديرة */
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* ظل خفيف */
+            margin: 0 auto; /* توسيط العناصر */
+            max-width: 600px; /* أقصى عرض للكتلة */
+        }
+
+        .contractor-info p {
+            border-bottom: 1px solid #ddd; /* حد أسفل كل فقرة */
+            padding: 10px 0; /* مساحة داخل الفقرة */
+        }
+
+        .contractor-info p:last-child {
+            border-bottom: none; /* إزالة الحد من الفقرة الأخيرة */
+        }
+
+        .back-button, .print-button {
+            display: inline-block; /* اجعل الزر في سطر واحد */
+            margin: 20px 5px; /* مسافة فوق الزر */
+            padding: 10px 20px; /* مساحة داخل الزر */
+            background-color: #4CAF50; /* لون خلفية الزر */
+            color: white; /* لون النص */
+            border: none;
+            border-radius: 5px; /* زوايا مستديرة للزر */
+            text-decoration: none; /* إزالة التسطير من الروابط */
+            cursor: pointer; /* تغيير شكل المؤشر عند التمرير */
+            font-size: 16px; /* حجم خط الزر */
+        }
+
+        .back-button:hover, .print-button:hover {
+            background-color: #45a049; /* تغيير لون الزر عند التمرير */
+        }
+    </style>
+    <script>
+        function printDetails() {
+            window.print(); // وظيفة الطباعة
+        }
+    </script>
+</head>
+<body>
+    <h1>تقرير المقاول</h1>
+
+    <div class="contractor-info">
+        <p><strong>اسم المقاول:</strong> {{ contractor.name }}</p>
+        <p><strong>رقم الهوية:</strong> {{ contractor.id_number }}</p>
+        <p><strong>رقم الجوال:</strong> {{ contractor.mobile_number }}</p>
+        <p><strong>المهنة:</strong> {{ contractor.profession }}</p>
+        <p><strong>ملاحظات:</strong> {{ contractor.notes }}</p>
+        <p><strong>أضيف بواسطة:</strong> {{ contractor.created_by }}</p>
+        <p><strong>تم التعديل بواسطة:</strong> {{ contractor.updated_by }}</p>
+        <p><strong>تاريخ الإضافة:</strong> {{ contractor.created_at }}</p>
+        <p><strong>تاريخ التعديل:</strong> {{ contractor.updated_at }}</p>
+    </div>
+
+    <div style="text-align: center;"> <!-- توسيط الأزرار -->
+        <button class="print-button" onclick="printDetails()">طباعة التقرير</button> <!-- زر الطباعة -->
+        <a href="{% url 'contractor_list' %}" class="back-button">العودة إلى قائمة المقاولين</a> <!-- استبدل 'contractors_list' بالاسم الصحيح لعرض القائمة -->
+    </div>
+</body>
+</html>
+

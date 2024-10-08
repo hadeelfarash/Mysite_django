@@ -42,5 +42,9 @@ urlpatterns = [
     path('orders/create/', views.order_create, name='order_create'),
     path('orders/update/<int:order_id>/', views.order_update, name='order_update'),
     path('orders/delete/<int:order_id>/', views.order_delete, name='order_delete'),
+    
+    path('contractor/<int:contractor_id>/', views.contractor_detail, name='contractor_detail'),  # تعيين URL لعرض التفاصيل
+    path('employee/<int:employee_id>/', views.employee_detail, name='employee_detail'),  # تعيين URL لعرض التفاصيل
+    path('subscribers/<int:subscribers_id>/', views.subscribers_detail, name='subscribers_detail'),  # تعيين URL لعرض التفاصيل
 
 ]

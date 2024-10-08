@@ -129,7 +129,8 @@
         <tbody>
             {% for subscriber in subscribers %}
             <tr>
-                <td>{{ subscriber.name }}</td>
+                <td><a href="{% url 'subscribers_detail' subscriber.id %}">{{ subscriber.name }}</a></td>
+
                 <td>{{ subscriber.id_number }}</td>
                 <td>{{ subscriber.phone_number }}</td>
                 <td>{{ subscriber.residence }}</td>
